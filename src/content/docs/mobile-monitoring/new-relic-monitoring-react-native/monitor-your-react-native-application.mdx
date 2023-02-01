@@ -180,9 +180,15 @@ npx react-native run-android --variant=release
 
 Integration with Expo is automatic with [bare workflow](https://docs.expo.dev/introduction/managed-vs-bare/#bare-workflow) but requires some extra steps for [custom managed workflow](https://docs.expo.io/workflow/customizing/) via [config plugins](https://docs.expo.io/guides/config-plugins/).
 
-To set up [custom managed workflow](https://docs.expo.dev/introduction/managed-vs-bare/#bare-workflow), after installing our package, add the config plugin to the plugins array of your `app.json` or `app.config.js`.
+To set up [custom managed workflow](https://docs.expo.dev/introduction/managed-vs-bare/#bare-workflow) with our agent, run the following command to install our package and add the config plugin to the plugins array of your `app.json` or `app.config.js`.
+
+```
+npx expo install newrelic-react-native-agent
+```
 
 For the managed work flow, you need to use the `expo prebuild --clean` command as described in the [Adding custom native code](https://docs.expo.dev/workflow/customizing/) guide to rebuild your app with the plugin changes. If this command is not running, you'll get errors when starting the New Relic agent.
+
+If you are running your app through Expo Go, note that the agent uses native code and will require running your app outside of Expo Go. You can follow the instructions in the [Custom native code in Expo Go](https://docs.expo.dev/bare/using-expo-client/) guide on how to do this.
 
 ## Routing Instrumentation(Capturing Current Screen Name)
 
